@@ -10,7 +10,7 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 # Usage
 ###### Run the generator:
 ```ruby
-bundle generate spec_regression
+rails generate spec_regression
 ```
 
 # Configuration
@@ -27,3 +27,11 @@ end
 regression_path = 'spec/models/regression'
 excluded_models = []
 ```
+
+# Contributing
+
+1. Fork it ( https://github.com/ndea/regressor/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
