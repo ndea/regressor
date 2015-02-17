@@ -9,10 +9,11 @@ module Regressor
   end
 
   class Configuration
-    attr_accessor :regression_path
+    attr_accessor :regression_path, :excluded_models
 
     def initialize
       @regression_path = 'spec/models/regression'
+      @excluded_models = []
     end
   end
 end

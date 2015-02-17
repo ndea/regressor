@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    regressor (0.1.1)
+    regressor (0.1.2)
       rails (~> 4.0)
 
 GEM
