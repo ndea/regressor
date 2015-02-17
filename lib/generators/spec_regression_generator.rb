@@ -18,7 +18,7 @@ class SpecRegressionGenerator < Rails::Generators::Base
   def create_regression_files
     all_models.map(&:name).reject { |x| ["ActiveType::Record", "ActiveType::Object", "HABTM_Users", "HABTM_Roles"].include? x }.each do |model|
       @model = RegressionModel.new(model)
-      create_file "#{Regressor.configure.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb", ERB.new(File.new(File.expand_path('templates/spec_regression_template.rb.erb', File.dirname(__FILE__))).read).result(binding)
+      create_file "#{Regressor.configuration.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb", ERB.new(File.new(File.expand_path('templates/spec_regression_template.rb.erb', File.dirname(__FILE__))).read).result(binding)
     end
   end
 
