@@ -57,7 +57,7 @@ class RegressionModel
   def database_columns
     @model.constantize.columns.map(&:name).map do |column|
       "it { is_expected.to have_db_column :#{column} }"
-    end.join("\n\t")
+    end.join("\n\t") rescue ''
   end
 
   def database_indexes
