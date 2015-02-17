@@ -10,7 +10,7 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 # Usage
 ###### Run the generator:
 ```ruby
-bundle generate spec_regression
+rails generate spec_regression
 ```
 
 # Configuration
