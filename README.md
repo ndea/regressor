@@ -8,7 +8,7 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 ```
 ###### Rubygems
 ```ruby
-gem 'regressor', '~> 0.1.4'
+gem 'regressor', '~> 0.1.5'
 ```
 
 ###### Install regressor
