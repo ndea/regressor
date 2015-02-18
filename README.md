@@ -20,6 +20,12 @@ bundle install
 rails g regressor:install
 ```
 
+Then require the gem dependency 'shoulda-matchers' in your rails_helper (or spec_helper if you're using RSpec 2.x):
+```ruby
+require 'shoulda/matchers'
+```
+
+
 # Usage
 ###### Run the generator:
 ```ruby
