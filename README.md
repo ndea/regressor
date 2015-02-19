@@ -6,6 +6,7 @@ Generate regression specs based on your ActiveRecord models.
 ```ruby
 gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 ```
+or 
 ###### Rubygems
 ```ruby
 gem 'regressor', '~> 0.1.5'
