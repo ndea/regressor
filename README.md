@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/regressor.svg)](http://badge.fury.io/rb/regressor)
 # Regressor
 Generate regression specs based on your ActiveRecord models.
 
