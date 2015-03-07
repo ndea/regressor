@@ -13,4 +13,8 @@ RSpec.describe <%= @model.model %> do
   <%= @model.database_indexes %>
   # === Validations ===
   <%= @model.validators %>
+  <% if Regressor.configuration.include_enums %>
+  # === Enums ===
+  <%= @model.enums %>
+  <% end %>
 end

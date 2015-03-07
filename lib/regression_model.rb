@@ -24,6 +24,17 @@ class RegressionModel
     end.join("\n\t") rescue nil
   end
 
+  def enums
+    enum_specs = []
+    @model.constantize.defined_enums.each do |enum_k, enum_v|
+      enum_values = enum_v.map do |key, value|
+        key
+      end
+      enum_specs << "it { is_expected.to define_enum_for(:#{enum_k}).with(#{enum_values})}"
+    end
+    enum_specs.compact.uniq.join("\n\t")
+  end
+
   def validators
     validator_specs = []
     @model.constantize.validators.each do |validator|
@@ -62,7 +73,7 @@ class RegressionModel
 
   def database_indexes
     ActiveRecord::Base.connection.indexes(@model.tableize.gsub("/", "_")).map do |indexes|
-        "it { is_expected.to have_db_index #{indexes.columns}}"
+      "it { is_expected.to have_db_index #{indexes.columns}}"
     end.flatten.join("\n\t") rescue nil
   end
 

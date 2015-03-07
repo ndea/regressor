@@ -9,11 +9,12 @@ module Regressor
   end
 
   class Configuration
-    attr_accessor :regression_path, :excluded_models
+    attr_accessor :regression_path, :excluded_models, :include_enums
 
     def initialize
       @regression_path = 'spec/models/regression'
       @excluded_models = []
+      @include_enums = true
     end
   end
 end
