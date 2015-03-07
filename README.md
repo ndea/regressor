@@ -26,7 +26,7 @@ Then require the gem dependency 'shoulda-matchers' in your rails_helper (or spec
 ```ruby
 require 'shoulda/matchers'
 ```
-
+If your are using Rails 3 or your Rails version does not support enums set the config.include_enums to false.
 
 # Usage
 ###### Run the generator:
@@ -41,12 +41,14 @@ rails generate spec_regression
 Regressor.configure do |config|
   config.regression_path = 'spec/models/regression'
   config.excluded_models = ["Foo", "Bar"]
+  config.include_enums = true
 end
 ```
 ###### Default configuration values:
 ```ruby
 regression_path = 'spec/models/regression'
 excluded_models = []
+include_enums = true
 ```
 
 # Contributing
