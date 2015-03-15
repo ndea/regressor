@@ -1,19 +1,18 @@
-require_relative 'relation/belong_to'
-require_relative 'relation/has_one'
-require_relative 'relation/has_many'
+require_relative 'model/relation/belong_to'
+require_relative 'model/relation/has_one'
+require_relative 'model/relation/has_many'
 
 class Regressor::RegressionModel
 
-  include Regressor::Relation::BelongTo
-  include Regressor::Relation::HasOne
-  include Regressor::Relation::HasMany
+  include Regressor::Model::Relation::BelongTo
+  include Regressor::Model::Relation::HasOne
+  include Regressor::Model::Relation::HasMany
 
   attr_accessor :model
 
   def initialize(model)
     @model = model
   end
-
 
   def enums
     enum_specs = []
