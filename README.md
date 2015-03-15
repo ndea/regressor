@@ -64,6 +64,7 @@ rails generate regressor:controller # Create Regression specs for your controlle
    - Columns
    - Indexes
  - Enums (Rails 4)
+
 ###### Controllers
  - Routing
  - Callbacks
