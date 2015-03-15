@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe <%= @controller.controller %> do
-    # === Routes (REST) ===
-    <%= @controller.rest_routes %>
+  # === Routes (REST) ===
+  <%= @controller.rest_routes %>
+  # === Callbacks (Before) ===
+  <%= @controller.before_callbacks %>
+  # === Callbacks (After) ===
+  <%= @controller.after_callbacks %>
 end
