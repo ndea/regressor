@@ -6,6 +6,7 @@ require_relative 'model/validation/presence'
 require_relative 'model/validation/length'
 
 require_relative 'model/database/column'
+require_relative 'model/database/index'
 
 class Regressor::RegressionModel
 
@@ -17,6 +18,7 @@ class Regressor::RegressionModel
   include Regressor::Model::Validation::Length
 
   include Regressor::Model::Database::Column
+  include Regressor::Model::Database::Index
 
   attr_accessor :model
 
@@ -43,11 +45,5 @@ class Regressor::RegressionModel
     end
   end
 
-
-  def database_indexes
-    ActiveRecord::Base.connection.indexes(@model.tableize.gsub("/", "_")).map do |indexes|
-      "it { is_expected.to have_db_index #{indexes.columns}}"
-    end.flatten.join("\n\t") rescue nil
-  end
 
 end
