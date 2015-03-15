@@ -1,4 +1,4 @@
-class Regressor::ModelGenerator::RegressionModel
+class Regressor::RegressionModel
 
   attr_accessor :model
 
