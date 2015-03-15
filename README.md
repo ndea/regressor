@@ -55,14 +55,14 @@ rails generate regressor:model
    - has_many
    - has_one
  - Nested Attributes
- - Validations 
+ - Validations
    - Length
    - Presence
  - Database
    - Columns
    - Indexes
  - Enums (Rails 4)
-   
+
 # Contributing
 
 1. Fork it ( https://github.com/ndea/regressor/fork )
