@@ -8,6 +8,8 @@ require_relative 'model/validation/length'
 require_relative 'model/database/column'
 require_relative 'model/database/index'
 
+require_relative 'model/nested/attribute'
+
 class Regressor::RegressionModel
 
   include Regressor::Model::Relation::BelongTo
@@ -19,6 +21,8 @@ class Regressor::RegressionModel
 
   include Regressor::Model::Database::Column
   include Regressor::Model::Database::Index
+
+  include Regressor::Model::Nested::Attribute
 
   attr_accessor :model
 
@@ -35,14 +39,6 @@ class Regressor::RegressionModel
       enum_specs << "it { is_expected.to define_enum_for(:#{enum_k}).with(#{enum_values})}"
     end
     enum_specs.compact.uniq.join("\n\t")
-  end
-
-  def nested_attributes
-    if @model.constantize.nested_attributes_options.present?
-      @model.constantize.nested_attributes_options.keys.map do |key|
-        "it { is_expected.to accept_nested_attributes_for :#{key} }"
-      end.join("\n\t") rescue nil
-    end
   end
 
 
