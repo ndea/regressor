@@ -16,11 +16,10 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency 'rails', '~> 4.0'
-
   s.add_runtime_dependency 'shoulda-matchers', '~> 2.7'
   s.add_runtime_dependency 'faker', '~> 1.3'
   s.add_runtime_dependency 'rspec-rails', '~> 3.0'
+  s.add_runtime_dependency 'rails', '~> 4.0'
 
   s.add_development_dependency 'sqlite3', '~> 1.3.0'
   s.add_development_dependency 'generator_spec'

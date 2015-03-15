@@ -11,8 +11,9 @@ RSpec.describe <%= @model.model %> do
   <%= @model.database_columns %>
   # === Database Indexes ===
   <%= @model.database_indexes %>
-  # === Validations ===
-  <%= @model.validators %>
+
+  # === Validations (Length) ===
+  <%= @model.length_validators %>
 
   # === Validations (Presence) ===
   <%= @model.presence_validators %>
