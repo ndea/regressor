@@ -1,8 +1,10 @@
 [![Gem Version](https://badge.fury.io/rb/regressor.svg)](http://badge.fury.io/rb/regressor)
 # Regressor
-Generate regression specs based on your ActiveRecord models.
+Regressor is a regression based testing tool.
+What is regression testing? [see here](http://en.wikipedia.org/wiki/Regression_testing).
+You can generate specs based on your ActiveRecord models.
 
-# Install
+# Get Regressor
 ###### Directly from GitHub
 ```ruby
 gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
@@ -10,45 +12,57 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 or 
 ###### Rubygems
 ```ruby
-gem 'regressor', '~> 0.1.5'
+gem 'regressor', '~> 0.2.0'
 ```
 
-###### Install regressor
+# Install
 ```bash
 bundle install
-```
-
-```ruby
 rails g regressor:install
+```
+This will create an initializer in config/initializers. This initializers looks like this:
+###### Initializer
+```ruby
+# If the regressor gem is inside a group wrap your initializer in
+# if defined?(Regressor) do .. end
+Regressor.configure do |config|
+  # Defines the path where the generated files will be placed
+  # config.regression_path = 'spec/models/regression'
+
+  # Exclude Models for regression spec generation.
+  # Provide model names as String (e.g. 'User')
+  # config.excluded_models = []
+
+  # If you are using enums in Rails 4 enable this option to generate regression specs for enums.
+  # If your Rails version is =< Rails 3 set this option to false.
+  # Default this option is set to true.
+  # config.include_enums = true
+end
 ```
 
 Then require the gem dependency 'shoulda-matchers' in your rails_helper (or spec_helper if you're using RSpec 2.x):
 ```ruby
 require 'shoulda/matchers'
 ```
-
-
 # Usage
 ###### Run the generator:
 ```ruby
-rails generate spec_regression
+rails generate regressor:model
 ```
-
-# Configuration
-###### Configuration via an initializer:
-```ruby
-# config/initializers/regressor.rb
-Regressor.configure do |config|
-  config.regression_path = 'spec/models/regression'
-  config.excluded_models = ["Foo", "Bar"]
-end
-```
-###### Default configuration values:
-```ruby
-regression_path = 'spec/models/regression'
-excluded_models = []
-```
-
+###### Supported Regressions
+ - Relations
+   - belongs_to
+   - has_many
+   - has_one
+ - Nested Attributes
+ - Validations 
+   - Length
+   - Presence
+ - Database
+   - Columns
+   - Indexes
+ - Enums (Rails 4)
+   
 # Contributing
 
 1. Fork it ( https://github.com/ndea/regressor/fork )
