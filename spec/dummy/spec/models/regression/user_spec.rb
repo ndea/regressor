@@ -21,7 +21,9 @@ RSpec.describe User do
 	it { is_expected.to have_db_column :updated_at }
 
   # === Database (Indexes) ===
-  
+  it 'does something' do
+
+  end
 
   # === Validations (Length) ===
   it { is_expected.to allow_value(Faker::Lorem.characters(0)).for :age }
