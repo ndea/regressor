@@ -5,6 +5,8 @@ require_relative 'model/relation/has_many'
 require_relative 'model/validation/presence'
 require_relative 'model/validation/length'
 
+require_relative 'model/database/column'
+
 class Regressor::RegressionModel
 
   include Regressor::Model::Relation::BelongTo
@@ -13,6 +15,8 @@ class Regressor::RegressionModel
 
   include Regressor::Model::Validation::Presence
   include Regressor::Model::Validation::Length
+
+  include Regressor::Model::Database::Column
 
   attr_accessor :model
 
@@ -39,11 +43,6 @@ class Regressor::RegressionModel
     end
   end
 
-  def database_columns
-    @model.constantize.columns.map(&:name).map do |column|
-      "it { is_expected.to have_db_column :#{column} }"
-    end.join("\n\t") rescue nil
-  end
 
   def database_indexes
     ActiveRecord::Base.connection.indexes(@model.tableize.gsub("/", "_")).map do |indexes|
