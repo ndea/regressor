@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version = Regressor::VERSION
   s.authors = ["Erwin Schens"]
   s.email = ["erwin.schens@tutorize.com"]
-  s.homepage = "http://example.org"
+  s.homepage = "https://github.com/ndea/regressor"
   s.summary = "Regressor generates regression specs based on ActiveRecord models"
   s.description = "Regressor generates regression specs based on ActiveRecord models. Currently relations, validations, attributes, and database indexes are supported."
   s.license = "MIT"
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'faker', '~> 1.3'
   s.add_runtime_dependency 'rspec-rails', '~> 3.0'
 
-  s.add_development_dependency 'sqlite3', '~> 0'
+  s.add_development_dependency 'sqlite3', '~> 1.3.0'
   s.add_development_dependency 'generator_spec'
 
 end
