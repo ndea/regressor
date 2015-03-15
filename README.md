@@ -47,9 +47,11 @@ require 'shoulda/matchers'
 # Usage
 ###### Run the generator:
 ```ruby
-rails generate regressor:model
+rails generate regressor:model # Create Regression specs for your models
+rails generate regressor:controller # Create Regression specs for your controllers
 ```
-###### Supported Regressions
+##### Supported Regressions
+###### Models
  - Relations
    - belongs_to
    - has_many
@@ -62,6 +64,12 @@ rails generate regressor:model
    - Columns
    - Indexes
  - Enums (Rails 4)
+###### Controllers
+ - Routing
+ - Callbacks
+   - Before filter
+   - After filter
+   - Around filter
 
 # Contributing
 

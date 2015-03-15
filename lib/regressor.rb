@@ -17,7 +17,7 @@ module Regressor
 
     def initialize
       @regression_path = 'spec/models/regression'
-      @regression_controller_path = 'spec/controllers/regressions'
+      @regression_controller_path = 'spec/controllers/regression'
       @excluded_models = []
       @excluded_controllers = []
       @include_enums = true
