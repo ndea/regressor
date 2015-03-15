@@ -2,11 +2,15 @@ require_relative 'model/relation/belong_to'
 require_relative 'model/relation/has_one'
 require_relative 'model/relation/has_many'
 
+require_relative 'model/validation/presence'
+
 class Regressor::RegressionModel
 
   include Regressor::Model::Relation::BelongTo
   include Regressor::Model::Relation::HasOne
   include Regressor::Model::Relation::HasMany
+
+  include Regressor::Model::Validation::Presence
 
   attr_accessor :model
 
