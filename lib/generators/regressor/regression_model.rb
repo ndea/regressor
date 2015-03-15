@@ -1,19 +1,15 @@
 require_relative 'relation/belong_to'
+require_relative 'relation/has_one'
 
 class Regressor::RegressionModel
 
   include Regressor::Relation::BelongTo
+  include Regressor::Relation::HasOne
 
   attr_accessor :model
 
   def initialize(model)
     @model = model
-  end
-
-  def has_one_relations
-    @model.constantize.reflect_on_all_associations(:has_one).map(&:name).map do |relation|
-      "it { is_expected.to have_one :#{relation}}"
-    end.join("\n\t") rescue nil
   end
 
   def has_many_relations
