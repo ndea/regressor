@@ -1,10 +1,12 @@
 require_relative 'relation/belong_to'
 require_relative 'relation/has_one'
+require_relative 'relation/has_many'
 
 class Regressor::RegressionModel
 
   include Regressor::Relation::BelongTo
   include Regressor::Relation::HasOne
+  include Regressor::Relation::HasMany
 
   attr_accessor :model
 
@@ -12,11 +14,6 @@ class Regressor::RegressionModel
     @model = model
   end
 
-  def has_many_relations
-    @model.constantize.reflect_on_all_associations(:has_many).map(&:name).map do |relation|
-      "it { is_expected.to have_many :#{relation}}"
-    end.join("\n\t") rescue nil
-  end
 
   def enums
     enum_specs = []
