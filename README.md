@@ -12,7 +12,7 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 or 
 ###### Rubygems
 ```ruby
-gem 'regressor', '~> 0.3.0'
+gem 'regressor', '~> 0.3.1'
 ```
 
 # Install
