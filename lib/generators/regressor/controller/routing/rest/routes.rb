@@ -8,7 +8,7 @@ module Regressor
             controller_path = @controller.constantize.controller_path
             @controller.constantize.action_methods.map do |action_method|
               begin
-                journey_route = extract_journey_route
+                journey_route = extract_journey_route(controller_path, action_method)
                 required_parts = extract_required_parts(journey_route)
                 url = url_for({controller: controller_path, action: action_method, only_path: true}.merge(required_parts))
                 generate_example(journey_route, controller_path, action_method, required_parts, url)
@@ -44,7 +44,7 @@ module Regressor
             end
           end
 
-          def extract_journey_route
+          def extract_journey_route(controller_path, action_method)
             Rails.application.routes.routes.routes.select do |route|
               if route.defaults.present?
                 route.defaults[:controller].to_sym == controller_path.to_sym && route.defaults[:action].to_sym == action_method.to_sym

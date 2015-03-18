@@ -22,6 +22,9 @@ RSpec.describe <%= @model.model %> do
   # === Validations (Presence) ===
   <%= @model.presence_validators %>
 
+  # === Validations (Numericality) ===
+  <%= @model.numericality_validators %>
+
   <% if Regressor.configuration.include_enums %>
   # === Enums ===
   <%= @model.enums %>
