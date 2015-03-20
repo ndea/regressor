@@ -4,7 +4,7 @@
 Regressor is a regression based testing tool.
 What is regression testing? [see here](http://en.wikipedia.org/wiki/Regression_testing).
 You can generate specs based on your ActiveRecord models.
-
+![Spec it!](http://cdn.meme.am/instances/55578798.jpg)
 # Get Regressor
 ###### Directly from GitHub
 ```ruby
