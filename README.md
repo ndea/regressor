@@ -79,6 +79,9 @@ rails generate regressor:controller # Create Regression specs for your controlle
    - After filter
    - Around filter
 
+# Also see
+[Guard for regressor - guard-regressor](https://github.com/patrick-nits/guard-regressor)
+
 # Contributing
 
 1. Fork it ( https://github.com/ndea/regressor/fork )
