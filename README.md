@@ -80,7 +80,7 @@ rails generate regressor:controller # Create Regression specs for your controlle
    - Around filter
 
 # Also see
-[Guard for regressor - guard-regressor](https://github.com/patrick-nits/guard-regressor)
+[Guard for regressor](https://github.com/patrick-nits/guard-regressor)
 
 # Contributing
 
