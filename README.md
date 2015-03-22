@@ -12,7 +12,7 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 or 
 ###### Rubygems
 ```ruby
-gem 'regressor', '~> 0.3.4'
+gem 'regressor', '~> 0.4.0'
 ```
 
 # Install
@@ -67,6 +67,7 @@ rails generate regressor:controller # Create Regression specs for your controlle
  - Validations
    - Length
    - Presence
+   - Numericality
  - Database
    - Columns
    - Indexes
