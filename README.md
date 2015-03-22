@@ -4,7 +4,6 @@
 Regressor is a regression based testing tool.
 What is regression testing? [see here](http://en.wikipedia.org/wiki/Regression_testing).
 You can generate specs based on your ActiveRecord models.
-
 # Get Regressor
 ###### Directly from GitHub
 ```ruby
@@ -79,6 +78,9 @@ rails generate regressor:controller # Create Regression specs for your controlle
    - Before filter
    - After filter
    - Around filter
+
+# Also see
+[Guard for regressor](https://github.com/patrick-nits/guard-regressor)
 
 # Contributing
 
