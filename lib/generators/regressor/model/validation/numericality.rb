@@ -4,62 +4,63 @@ module Regressor
       module Numericality
         def numericality_validators
           extract_validators(ActiveModel::Validations::NumericalityValidator).inject([]) do |result, validator|
-            validator.options.each do |k, v|
-              case k
-                when :even
-                  validator.attributes.each do |attribute|
-                    result << "it { is_expected.to validate_numericality_of(:#{attribute}).even}"
-                  end
-                when :only_integer
-                  validator.attributes.each do |attribute|
-                    result << "it { is_expected.to validate_numericality_of(:#{attribute}).only_integer}"
-                  end
-                when :allow_nil
-                  validator.attributes.each do |attribute|
-                    result << "it { is_expected.to validate_numericality_of(:#{attribute}).allow_nil}"
-                  end
-              end
+            if validator.options.blank?
+              result += validator_without_options(validator)
+            else
+              result += validator_with_options(validator)
             end
             result
           end.uniq.join("\n\t")
         end
+
+        private
+
+        def validator_without_options(validator)
+          validator.attributes.map do |attribute|
+            "it { is_expected.to validate_numericality_of(:#{attribute})}"
+          end.flatten
+        end
+
+        def validator_with_options(validator)
+          validator.options.map do |k, v|
+            assertion = (v ? :to : :not_to)
+            case k
+              when :even
+                generate_spec_with_option(validator, :even, assertion)
+              when :only_integer
+                generate_spec_with_option(validator, :only_integer, assertion)
+              when :allow_nil
+                generate_spec_with_option(validator, :allow_nil, assertion)
+              when :less_than
+                generate_spec_with_option(validator, "is_less_than(#{v})") +
+                    generate_spec_with_option(validator, "is_less_than(#{v + 1})", :not_to)
+              when :less_than_or_equal_to
+                generate_spec_with_option(validator, "is_less_than_or_equal_to(#{v})") +
+                    generate_spec_with_option(validator, "is_less_than_or_equal_to(#{v + 1})", :not_to)
+              when :equal_to
+                generate_spec_with_option(validator, "is_equal_to(#{v})") +
+                    generate_spec_with_option(validator, "is_equal_to(#{v + 1})", :not_to)
+              when :greater_than_or_equal_to
+                generate_spec_with_option(validator, "is_greater_than_or_equal_to(#{v})") +
+                    generate_spec_with_option(validator, "is_greater_than_or_equal_to(#{v - 1})", :not_to)
+              when :greater_than
+                generate_spec_with_option(validator, "is_greater_than(#{v})") +
+                    generate_spec_with_option(validator, "is_greater_than(#{v - 1})", :not_to)
+              when :odd
+                generate_spec_with_option(validator, :odd, assertion)
+              when :message
+                generate_spec_with_option(validator, "with_message('#{v}')")
+            end
+          end.flatten
+        end
+
+        def generate_spec_with_option(validator, matcher, assertion = :to)
+          validator.attributes.map do |attribute|
+            "it { is_expected.#{assertion} validate_numericality_of(:#{attribute}).#{matcher} }"
+          end
+        end
+
       end
     end
   end
 end
-
-# * <tt>:message</tt> - A custom error message (default is: "is not a number").
-# * <tt>:only_integer</tt> - Specifies whether the value has to be an
-#   integer, e.g. an integral value (default is +false+).
-# * <tt>:allow_nil</tt> - Skip validation if attribute is +nil+ (default is
-#   +false+). Notice that for fixnum and float columns empty strings are
-#   converted to +nil+.
-# * <tt>:greater_than</tt> - Specifies the value must be greater than the
-#   supplied value.
-# * <tt>:greater_than_or_equal_to</tt> - Specifies the value must be
-#   greater than or equal the supplied value.
-# * <tt>:equal_to</tt> - Specifies the value must be equal to the supplied
-#   value.
-# * <tt>:less_than</tt> - Specifies the value must be less than the
-#   supplied value.
-# * <tt>:less_than_or_equal_to</tt> - Specifies the value must be less
-#   than or equal the supplied value.
-# * <tt>:other_than</tt> - Specifies the value must be other than the
-#   supplied value.
-# * <tt>:odd</tt> - Specifies the value must be an odd number.
-# * <tt>:even</tt> - Specifies the value must be an even number.
-#
-# There is also a list of default options supported by every validator:
-# +:if+, +:unless+, +:on+, +:allow_nil+, +:allow_blank+, and +:strict+ .
-# See <tt>ActiveModel::Validation#validates</tt> for more information
-#
-# The following checks can also be supplied with a proc or a symbol which
-# corresponds to a method:
-#
-# * <tt>:greater_than</tt>
-# * <tt>:greater_than_or_equal_to</tt>
-# * <tt>:equal_to</tt>
-# * <tt>:less_than</tt>
-# * <tt>:less_than_or_equal_to</tt>
-# * <tt>:only_integer</tt>
-#
