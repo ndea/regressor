@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe <%= @controller.controller %>, regressor: true do
+RSpec.describe <%= @controller.controller %>, regressor: true do
   # === Routes (REST) ===
   <%= @controller.rest_routes %>
   # === Callbacks (Before) ===
