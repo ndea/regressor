@@ -37,17 +37,18 @@ module Regressor
           end
 
           def extract_required_parts(journey_route)
-            journey_route.required_parts.inject({}) do |required_part_hash, required_part|
-              required_part_hash.merge!({
-                                            required_part => '1'
-                                        })
-              if journey_route.defaults[:format]
-                required_part_hash.reverse_merge!({
-                                                      format: journey_route.defaults[:format]
-                                                  })
-              end
-              required_part_hash
+            required_parts_hash = journey_route.required_parts.inject({}) do |required_part_hash, required_part|
+              required_part_hash.reverse_merge!({
+                                                    required_part => '1'
+                                                })
             end
+
+            if journey_route.defaults[:format]
+              required_parts_hash.reverse_merge!({
+                                                     format: journey_route.defaults[:format]
+                                                 })
+            end
+            required_parts_hash
           end
 
           def extract_journey_route(controller_path, action_method)
