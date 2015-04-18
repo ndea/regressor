@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe <%= @model.model %> do
+RSpec.describe <%= @model.model %>, regressor: true do
 
   # === Relations ===
   <%= @model.belong_to_relations %>
