@@ -24,23 +24,29 @@ module Regressor
           def generate_example(journey_route, controller_path, action_method, required_parts, url)
             request_method = journey_route.constraints[:request_method]
             if request_method.match('GET')
-              "it { should route(:get, '#{url}').to(#{{controller: controller_path, action: action_method}.merge(required_parts).to_s}) } "
+              "it { should route(:get, '#{url}').to('#{controller_path}##{action_method}', #{required_parts}) }"
             elsif request_method.match('POST')
-              "it { should route(:post, '#{url}').to(#{{controller: controller_path, action: action_method}.merge(required_parts).to_s}) } "
+              "it { should route(:post, '#{url}').to('#{controller_path}##{action_method}', #{required_parts}) } "
             elsif request_method.match('PUT')
-              "it { should route(:put, '#{url}').to(#{{controller: controller_path, action: action_method}.merge(required_parts).to_s}) } "
+              "it { should route(:put, '#{url}').to('#{controller_path}##{action_method}', #{required_parts}) } "
             elsif request_method.match('PATCH')
-              "it { should route(:patch, '#{url}').to(#{{controller: controller_path, action: action_method}.merge(required_parts).to_s}) } "
+              "it { should route(:patch, '#{url}').to('#{controller_path}##{action_method}', #{required_parts}) } "
             elsif request_method.match('DELETE')
-              "it { should route(:delete, '#{url}').to(#{{controller: controller_path, action: action_method}.merge(required_parts).to_s}) } "
+              "it { should route(:delete, '#{url}').to('#{controller_path}##{action_method}', #{required_parts}) } "
             end
           end
 
           def extract_required_parts(journey_route)
             journey_route.required_parts.inject({}) do |required_part_hash, required_part|
               required_part_hash.merge!({
-                                            required_part => 1
+                                            required_part => '1'
                                         })
+              if journey_route.defaults[:format]
+                required_part_hash.reverse_merge!({
+                                                      format: journey_route.defaults[:format]
+                                                  })
+              end
+              required_part_hash
             end
           end
 
