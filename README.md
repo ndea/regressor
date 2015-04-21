@@ -81,6 +81,7 @@ rails generate regressor:controller # Create Regression specs for your controlle
    - Around filter
 
 # Also see
+[Airpair - Generate specs for your Rails application](https://www.airpair.com/rspec/posts/gert) 
 [Guard for regressor](https://github.com/patrick-nits/guard-regressor)
 
 # Contributing
