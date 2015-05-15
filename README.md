@@ -1,6 +1,7 @@
 [![Gem Version](https://badge.fury.io/rb/regressor.svg)](http://badge.fury.io/rb/regressor)
 [![Code Climate](https://codeclimate.com/repos/5506977e6956803f8f003bea/badges/946b605251d8ad324625/gpa.svg)](https://codeclimate.com/repos/5506977e6956803f8f003bea/feed)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ndea/regressor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 # Regressor
 Regressor is a regression based testing tool.
 What is regression testing? [see here](http://en.wikipedia.org/wiki/Regression_testing).
@@ -95,5 +96,4 @@ rails generate regressor:controller # Create Regression specs for your controlle
 5. Create a new Pull Request
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ndea/regressor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
