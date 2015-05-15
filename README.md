@@ -93,3 +93,7 @@ rails generate regressor:controller # Create Regression specs for your controlle
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ndea/regressor/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
