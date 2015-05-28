@@ -16,7 +16,7 @@ module Regressor
                 puts "Could not generate regression spec for controller #{controller_path} with action: #{action_method}"
                 nil
               end
-            end.uniq.compact.join("\n\t")
+            end.uniq.compact.join("\n  ")
           end
 
           private
