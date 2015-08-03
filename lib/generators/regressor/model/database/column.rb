@@ -5,7 +5,7 @@ module Regressor
         def columns
           @model.constantize.columns.map(&:name).map do |column|
             "it { is_expected.to have_db_column :#{column} }"
-          end.join("\n\t")
+          end.join("\n  ")
         end
       end
     end

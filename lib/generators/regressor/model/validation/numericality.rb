@@ -10,14 +10,14 @@ module Regressor
               result += validator_with_options(validator)
             end
             result
-          end.uniq.join("\n\t")
+          end.uniq.join("\n  ")
         end
 
         private
 
         def validator_without_options(validator)
           validator.attributes.map do |attribute|
-            "it { is_expected.to validate_numericality_of(:#{attribute})}"
+            "it { is_expected.to validate_numericality_of(:#{attribute}) }"
           end.flatten
         end
 

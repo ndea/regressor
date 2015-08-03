@@ -7,7 +7,7 @@ module Regressor
             result << generate_length_examples(validator, validator.options[:minimum]-1, validator.options[:minimum]) if validator.options[:minimum]
             result << generate_length_examples(validator, validator.options[:maximum] + 1, validator.options[:maximum]) if validator.options[:maximum]
             result
-          end.flatten.compact.uniq.join("\n\t")
+          end.flatten.compact.uniq.join("\n  ")
         end
 
         private
