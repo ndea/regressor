@@ -20,14 +20,5 @@ module Regressor
       ActiveRecord::Base.descendants.map(&:name).reject { |x| Regressor.configuration.excluded_models.include? x }
     end
 
-    def load_mongoid_models
-      models = Object.constants.collect { |sym| Object.const_get(sym) }.
-          select { |constant| constant.class == Class && constant.include?(Mongoid::Document) }
-      models.each do |model|
-        models << model.subclasses
-      end
-      models.flatten.reject { |x| Regressor.configuration.excluded_models.include? x }
-    end
-
   end
 end
