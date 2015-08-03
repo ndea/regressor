@@ -6,17 +6,10 @@ module Regressor
 
     def create_regression_files
       Rails.application.eager_load!
-
-      models = if Regressor.configuration.orm == :mongoid
-                 load_mongoid_models
-               else
-                 load_ar_models
-               end
-
-      models.each do |model|
+      load_ar_models.each do |model|
         begin
           @model = Regressor::RegressionModel.new(model)
-          create_file "#{Regressor.configuration.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb", ERB.new(File.new(File.expand_path('../templates/spec_regression_template.erb', File.dirname(__FILE__))).read).result(binding)
+          create_file "#{Regressor.configuration.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb", ERB.new(File.new(File.expand_path('../templates/model/spec_regression_template.erb', File.dirname(__FILE__))).read).result(binding)
         rescue Exception
           puts "Cannot create Model Regression for: #{model}"
         end
@@ -33,7 +26,7 @@ module Regressor
       models.each do |model|
         models << model.subclasses
       end
-      models.flatten
+      models.flatten.reject { |x| Regressor.configuration.excluded_models.include? x }
     end
 
   end
