@@ -1,4 +1,4 @@
-require_relative 'regression_controller'
+require_relative '../regression_controller'
 
 module Regressor
   class ControllerGenerator < Rails::Generators::Base

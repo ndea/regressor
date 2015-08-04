@@ -1,4 +1,4 @@
-require_relative 'regression_model'
+require_relative '../../model/active_record'
 
 module Regressor
   class ModelGenerator < Rails::Generators::Base
@@ -8,15 +8,6 @@ module Regressor
       load_application
       generate_ar_specs
       generate_mongoid_specs
-
-      load_models.each do |model|
-        begin
-          @model = Regressor::Model::ActiveRecord.new(model)
-          create_file "#{Regressor.configuration.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb", ERB.new(File.new(File.expand_path('../templates/model/spec_regression_template.erb', File.dirname(__FILE__))).read).result(binding)
-        rescue Exception
-          puts "Cannot create Model Regression for: #{model}"
-        end
-      end
     end
 
     private

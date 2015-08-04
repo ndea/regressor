@@ -1,3 +1,6 @@
+require 'generators/regressor/generator/install_generator'
+require 'generators/regressor/generator/controller_generator'
+require 'generators/regressor/generator/active_record/model_generator'
 module Regressor
   class << self
     attr_accessor :configuration
