@@ -97,4 +97,7 @@ rails generate regressor:controller # Create Regression specs for your controlle
 5. Create a new Pull Request
 
 
+Made with ♥ at [TUTORize](http://tutorize.info)
+
+
 
