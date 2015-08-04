@@ -11,7 +11,7 @@ module Regressor
 
       load_models.each do |model|
         begin
-          @model = Regressor::ActiveRecord.new(model)
+          @model = Regressor::Model::ActiveRecord.new(model)
           create_file "#{Regressor.configuration.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb", ERB.new(File.new(File.expand_path('../templates/model/spec_regression_template.erb', File.dirname(__FILE__))).read).result(binding)
         rescue Exception
           puts "Cannot create Model Regression for: #{model}"
@@ -24,7 +24,7 @@ module Regressor
     def generate_ar_specs
       load_ar_models.each do |model|
         save_generate(model) do
-          @model = Regressor::ActiveRecord.new(model)
+          @model = Regressor::Model::ActiveRecord.new(model)
           create_file "#{Regressor.configuration.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb",
                       ERB.new(File.new(File.expand_path('../templates/model/active_record/model_template.erb', File.dirname(__FILE__))).read).result(binding)
         end
@@ -34,9 +34,7 @@ module Regressor
     def generate_mongoid_specs
       load_mongoid_models.each do |model|
         save_generate(model) do
-          @model = Regressor::ActiveRecord.new(model)
-          create_file "#{Regressor.configuration.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb",
-                      ERB.new(File.new(File.expand_path('../templates/model/active_record/model_template.erb', File.dirname(__FILE__))).read).result(binding)
+          # nop
         end
       end
     end
