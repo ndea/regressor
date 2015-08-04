@@ -22,7 +22,7 @@ module Regressor
 
     def load_ar_models
       if defined?(::ActiveRecord::Base)
-        ActiveRecord::Base.descendants.map(&:name).reject { |x| Regressor.configuration.excluded_models.include? x }
+        ::ActiveRecord::Base.descendants.map(&:name).reject { |x| Regressor.configuration.excluded_models.include? x }
       else
         []
       end
@@ -30,7 +30,7 @@ module Regressor
 
     def load_mongoid_models
       models = Object.constants.collect { |sym| Object.const_get(sym) }.
-          select { |constant| constant.class == Class && constant.include?(Mongoid::Document) }
+          select { |constant| constant.class == Class && constant.include?(::Mongoid::Document) }
 
       models.each do |model|
         models << model.subclasses
