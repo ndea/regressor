@@ -5,7 +5,10 @@ module Regressor
     source_root(File.expand_path(File.dirname(__FILE__)))
 
     def create_regression_files
-      Rails.application.try(:eager_load!)
+      load_application
+      generate_ar_specs
+      generate_mongoid_specs
+
       load_models.each do |model|
         begin
           @model = Regressor::RegressionModel.new(model)
@@ -16,8 +19,30 @@ module Regressor
       end
     end
 
-    def load_models
-      load_ar_models + load_mongoid_models
+    private
+
+    def generate_ar_specs
+      load_ar_models.each do |model|
+        save_generate(model) do
+          @model = Regressor::RegressionModel.new(model)
+          create_file "#{Regressor.configuration.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb",
+                      ERB.new(File.new(File.expand_path('../templates/model/active_record/model_template.erb', File.dirname(__FILE__))).read).result(binding)
+        end
+      end
+    end
+
+    def generate_mongoid_specs
+      load_mongoid_models.each do |model|
+        save_generate(model) do
+          @model = Regressor::RegressionModel.new(model)
+          create_file "#{Regressor.configuration.regression_path}/#{model.tableize.gsub("/", "_").singularize}_spec.rb",
+                      ERB.new(File.new(File.expand_path('../templates/model/active_record/model_template.erb', File.dirname(__FILE__))).read).result(binding)
+        end
+      end
+    end
+
+    def load_application
+      Rails.application.try(:eager_load!)
     end
 
     def load_ar_models
@@ -37,6 +62,14 @@ module Regressor
       end
 
       models.flatten.uniq.reject { |x| Regressor.configuration.excluded_models.include? x }
+    end
+
+    def save_generate(model)
+      begin
+        yield
+      rescue Exception
+        puts "Cannot create model regression for #{model}"
+      end
     end
 
   end
