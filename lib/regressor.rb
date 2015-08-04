@@ -1,6 +1,3 @@
-require 'generators/regressor/install_generator'
-require 'generators/regressor/controller_generator'
-
 module Regressor
   class << self
     attr_accessor :configuration
