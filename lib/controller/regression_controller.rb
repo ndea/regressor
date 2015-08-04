@@ -1,23 +1,26 @@
-require_relative '../../../lib/generators/regressor/controller/util'
-require_relative '../../../lib/generators/regressor/controller/routing/rest/routes'
-require_relative '../../../lib/generators/regressor/controller/callback/before_filter'
-require_relative '../../../lib/generators/regressor/controller/callback/after_filter'
-require_relative '../../../lib/generators/regressor/controller/callback/around_filter'
+require 'controller/util'
+require 'controller/routing/rest/routes'
+require 'controller/callback/after_filter'
+require 'controller/callback/before_filter'
+require 'controller/callback/around_filter'
 
-class Regressor::RegressionController
-  include Rails.application.routes.url_helpers
-  include ActionDispatch::Routing
+module Regressor
+  module Controller
+    class Regression
+      include Rails.application.routes.url_helpers
+      include ActionDispatch::Routing
 
-  include Regressor::Controller::Util
-  include Regressor::Controller::Routing::Rest::Routes
-  include Regressor::Controller::Callback::BeforeFilter
-  include Regressor::Controller::Callback::AfterFilter
-  include Regressor::Controller::Callback::AroundFilter
+      include Util
+      include Routing::Rest::Routes
+      include Callback::BeforeFilter
+      include Callback::AfterFilter
+      include Callback::AroundFilter
 
-  attr_accessor :controller
+      attr_accessor :controller
 
-  def initialize(controller)
-    @controller = controller
+      def initialize(controller)
+        @controller = controller
+      end
+    end
   end
-
 end
