@@ -1,6 +1,7 @@
 require 'model/mongoid/database/field'
 require 'model/mongoid/relation/has_many'
 require 'model/mongoid/relation/has_one'
+require 'model/mongoid/relation/belongs_to'
 
 module Regressor
   module Model
@@ -9,6 +10,7 @@ module Regressor
       include Mongoid::Database::Field
       include Mongoid::Relation::HasMany
       include Mongoid::Relation::HasOne
+      include Mongoid::Relation::BelongsTo
 
       # === Attribute Accessors ===
       attr_accessor :model
