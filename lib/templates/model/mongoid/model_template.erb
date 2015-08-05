@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe <%= @model.model %>, regressor: true do
+  # === Document ===
+  <%= @model.timestamp_includes %>
 
   # === Relations ===
   <%= @model.belongs_to_relations %>

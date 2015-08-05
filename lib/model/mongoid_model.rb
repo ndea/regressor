@@ -3,6 +3,7 @@ require 'model/mongoid/relation/has_many'
 require 'model/mongoid/relation/has_one'
 require 'model/mongoid/relation/belongs_to'
 require 'model/mongoid/relation/embedded'
+require 'model/mongoid/document/timestamp'
 
 module Regressor
   module Model
@@ -13,6 +14,7 @@ module Regressor
       include Mongoid::Relation::HasOne
       include Mongoid::Relation::BelongsTo
       include Mongoid::Relation::Embedded
+      include Mongoid::Document::Timestamp
 
       # === Attribute Accessors ===
       attr_accessor :model
