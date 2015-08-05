@@ -37,7 +37,6 @@ module Regressor
       begin
         yield
       rescue Exception => e
-        puts e.backtrace
         puts "Cannot create model regression for #{model}"
       end
     end
