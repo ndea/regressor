@@ -59,6 +59,7 @@ require 'shoulda/matchers'
 ```
 # Usage
 ###### Run the generator:
+##### ActiveRecord 
 ```ruby
 rails generate regressor:model # Create Regression specs for your models
 rails generate regressor:controller # Create Regression specs for your controllers
