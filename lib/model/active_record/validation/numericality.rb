@@ -3,7 +3,7 @@ module Regressor
     module Validation
       module Numericality
         def numericality_validators
-          extract_validators(ActiveModel::Validations::NumericalityValidator).inject([]) do |result, validator|
+          extract_validators(::ActiveModel::Validations::NumericalityValidator).inject([]) do |result, validator|
             if validator.options.blank?
               result += validator_without_options(validator)
             else

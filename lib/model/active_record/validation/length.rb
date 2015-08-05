@@ -3,7 +3,7 @@ module Regressor
     module Validation
       module Length
         def length_validators
-          extract_validators(ActiveModel::Validations::LengthValidator).inject([]) do |result, validator|
+          extract_validators(::ActiveModel::Validations::LengthValidator).inject([]) do |result, validator|
             result << generate_length_examples(validator, validator.options[:minimum]-1, validator.options[:minimum]) if validator.options[:minimum]
             result << generate_length_examples(validator, validator.options[:maximum] + 1, validator.options[:maximum]) if validator.options[:maximum]
             result
