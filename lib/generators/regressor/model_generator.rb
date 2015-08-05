@@ -7,7 +7,6 @@ module Regressor
     def create_regression_files
       load_application
       generate_ar_specs
-      generate_mongoid_specs
     end
 
     private
