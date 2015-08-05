@@ -12,18 +12,18 @@ module Regressor
           private
 
           def included_timestamp_modules
-            @model.included.modules.select do |module_included|
-              [Mongoid::Timestamps::Created, Mongoid::Timestamps::Updated, Mongoid::Timestamps].include? module_included
+            @model.included_modules.select do |module_included|
+              ['Mongoid::Timestamps::Created', 'Mongoid::Timestamps::Updated', 'Mongoid::Timestamps'].include? module_included.to_s
             end
           end
 
           def timestamp_module(module_included)
-            case module_included
-              when Mongoid::Timestamps
+            case module_included.to_s
+              when 'Mongoid::Timestamps'
                 timestamped_document
-              when Mongoid::Timestamps::Created
+              when 'Mongoid::Timestamps::Created'
                 timestamped_document_with_created
-              when Mongoid::Timestamps::Updated
+              when 'Mongoid::Timestamps::Updated'
                 timestamped_document_with_updated
             end
           end
