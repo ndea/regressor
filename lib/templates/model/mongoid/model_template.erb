@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe <%= @model.model %>, regressor: true do
 
   # === Relations ===
+  <%= @model.has_one_relations %>
   <%= @model.has_many_relations %>
 
   # === Nested Attributes ===
