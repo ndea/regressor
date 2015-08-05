@@ -92,6 +92,8 @@ rails generate regressor:mongoid:model # Create regression specs for your mongoi
    - belongs_to
    - has_many
    - has_one
+   - embeds_one
+   - embeds_many
  - Database
    - Fields
 
