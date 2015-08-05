@@ -1,4 +1,4 @@
-require 'model/mongoid'
+require 'model/mongoid_model'
 
 module Regressor
   module Mongoid
@@ -15,7 +15,7 @@ module Regressor
       def generate_mongoid_specs
         load_mongoid_models.each do |model|
           save_generate(model) do
-            @model = ::Regressor::Model::Mongoid.new(model)
+            @model = ::Regressor::Model::MongoidModel.new(model)
             create_file "#{Regressor.configuration.regression_path}/#{model.name.tableize.singularize}_spec.rb",
                         ERB.new(File.new(File.expand_path('../../../templates/model/mongoid/model_template.erb', File.dirname(__FILE__))).read).result(binding)
           end

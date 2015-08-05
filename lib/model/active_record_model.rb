@@ -12,7 +12,7 @@ require_relative 'active_record/enum'
 
 module Regressor
   module Model
-    class ActiveRecord
+    class ActiveRecordModel
       # === Includes ===
       include Relation::BelongTo
       include Relation::HasOne

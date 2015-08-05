@@ -1,7 +1,10 @@
+require 'model/mongoid/database/field'
+
 module Regressor
   module Model
-    class Mongoid
+    class MongoidModel
       # === Includes ===
+      include Mongoid::Database::Field
 
       # === Attribute Accessors ===
       attr_accessor :model
@@ -10,6 +13,7 @@ module Regressor
       def initialize(model)
         @model = model
       end
+
     end
   end
 end
