@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe <%= @model.model %>, regressor: true do
   # === Document ===
   <%= @model.timestamp_includes %>
+  <%= @model.version_include %>
 
   # === Relations ===
   <%= @model.belongs_to_relations %>

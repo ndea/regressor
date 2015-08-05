@@ -4,6 +4,7 @@ require 'model/mongoid/relation/has_one'
 require 'model/mongoid/relation/belongs_to'
 require 'model/mongoid/relation/embedded'
 require 'model/mongoid/document/timestamp'
+require 'model/mongoid/document/version'
 
 module Regressor
   module Model
@@ -15,6 +16,7 @@ module Regressor
       include Mongoid::Relation::BelongsTo
       include Mongoid::Relation::Embedded
       include Mongoid::Document::Timestamp
+      include Mongoid::Document::Version
 
       # === Attribute Accessors ===
       attr_accessor :model
