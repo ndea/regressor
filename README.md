@@ -18,7 +18,7 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 or 
 ###### Rubygems
 ```ruby
-gem 'regressor', '~> 0.4.2'
+gem 'regressor', '~> 0.5.0'
 ```
 
 # Install
@@ -63,8 +63,15 @@ require 'shoulda/matchers'
 rails generate regressor:model # Create Regression specs for your models
 rails generate regressor:controller # Create Regression specs for your controllers
 ```
+##### Mongoid
+```ruby
+rails generate regressor:mongoid:model # Create regression specs for your mongoid models
+```
+
 ##### Supported Regressions
-###### Models
+##### Models
+
+###### ActiveRecord
  - Relations
    - belongs_to
    - has_many
@@ -78,6 +85,14 @@ rails generate regressor:controller # Create Regression specs for your controlle
    - Columns
    - Indexes
  - Enums (Rails 4)
+ 
+###### Mongoid
+ - Relations
+   - belongs_to
+   - has_many
+   - has_one
+ - Database
+   - Fields
 
 ###### Controllers
  - Routing
