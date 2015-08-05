@@ -18,7 +18,7 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 or 
 ###### Rubygems
 ```ruby
-gem 'regressor', '~> 0.5.1'
+gem 'regressor', '~> 0.5.2'
 ```
 
 # Install
@@ -96,6 +96,8 @@ rails generate regressor:mongoid:model # Create regression specs for your mongoi
    - embeds_many
  - Database
    - Fields
+ - Document
+   - Includes
 
 ###### Controllers
  - Routing
