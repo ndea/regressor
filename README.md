@@ -115,7 +115,10 @@ rails generate regressor:mongoid:model # Create regression specs for your mongoi
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
+# Contribution topics wanted
 
-
-
-
+- Specs
+- Documentation
+- Bugfixes
+- Codestyle
+- Anything that improves this gem
