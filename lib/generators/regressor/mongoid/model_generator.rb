@@ -36,8 +36,8 @@ module Regressor
       def save_generate(model)
         begin
           yield
-        rescue Exception => e
-          puts "Cannot create model regression for #{model}"
+        rescue => e
+          puts "Cannot create model regression for #{model}. Reason #{e.message}"
         end
       end
 
