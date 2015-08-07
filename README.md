@@ -57,6 +57,9 @@ Then require the gem dependency 'shoulda-matchers' in your rails_helper (or spec
 ```ruby
 require 'shoulda/matchers'
 ```
+
+If you are using mongoid please add [mongoid-rspec](https://github.com/mongoid-rspec/mongoid-rspec).
+
 # Usage
 ###### Run the generator:
 ##### ActiveRecord 
@@ -65,8 +68,6 @@ rails generate regressor:model # Create Regression specs for your models
 rails generate regressor:controller # Create Regression specs for your controllers
 ```
 ##### Mongoid
-Please add [mongoid-rspec](https://github.com/mongoid-rspec/mongoid-rspec) if you are using regressor together with mongoid.
-
 ```ruby
 rails generate regressor:mongoid:model # Create regression specs for your mongoid models
 ```
