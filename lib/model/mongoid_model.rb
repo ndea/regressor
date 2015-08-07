@@ -1,3 +1,4 @@
+require 'model/expression'
 require 'model/mongoid/database/field'
 require 'model/mongoid/relation/has_many'
 require 'model/mongoid/relation/has_one'

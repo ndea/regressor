@@ -1,7 +1,7 @@
 require 'model/active_record_model'
 
 module Regressor
-  class ModelGenerator < Rails::Generators::Base
+  class ModelGenerator < ::Rails::Generators::Base
     source_root(File.expand_path(File.dirname(__FILE__)))
 
     def create_regression_files
