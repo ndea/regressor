@@ -19,7 +19,8 @@ module Regressor
         controller = @controller.constantize
         all_filters = controller._process_action_callbacks
         all_filters = all_filters.select { |f| f.kind == kind } if kind
-        all_filters.map(&:filter)
+        # Reject procs
+        all_filters.map(&:raw_filter).reject{|filter| filter.class == Proc}
       end
     end
   end
