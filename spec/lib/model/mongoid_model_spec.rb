@@ -9,7 +9,7 @@ RSpec.describe Regressor::Model::MongoidModel do
 
   # === Regressor::Model::Mongoid::Database::Field ===
   it { expect(subject.fields_as_string).to be_kind_of String }
-  it { expect(subject.fields.size).to eq 17 }
+  it { expect(subject.fields.size).to eq 18 }
   it { expect(subject.fields.first).to eq 'it { is_expected.to have_field(:_id).of_type(BSON::ObjectId) }' }
   it { expect(subject.fields).to include ::Regressor::Model::Expression.new(:is_expected, :to, :have_field, :dummy_array, 'of_type(Array)').to_s }
   it { expect(subject.fields).to include ::Regressor::Model::Expression.new(:is_expected, :to, :have_field, :dummy_big_decimal, 'of_type(BigDecimal)').to_s }
@@ -27,4 +27,15 @@ RSpec.describe Regressor::Model::MongoidModel do
   it { expect(subject.fields).to include ::Regressor::Model::Expression.new(:is_expected, :to, :have_field, :dummy_string, 'of_type(String)').to_s }
   it { expect(subject.fields).to include ::Regressor::Model::Expression.new(:is_expected, :to, :have_field, :dummy_symbol, 'of_type(Symbol)').to_s }
   it { expect(subject.fields).to include ::Regressor::Model::Expression.new(:is_expected, :to, :have_field, :dummy_time, 'of_type(Time)').to_s }
+  it { expect(subject.fields).to include ::Regressor::Model::Expression.new(:is_expected, :to, :have_field, :dummy_option_id, 'of_type(Object)').to_s }
+
+  # === Regressor::Model::Mongoid::Relation::BelongsTo ===
+  it { expect(subject.belongs_to_relations).to include ::Regressor::Model::Expression.new(:is_expected, :to, :belong_to, :dummy_option).to_s }
+
+  # === Regressor::Model::Mongoid::Relation::Embedded ===
+  it { expect(subject.embedded_relations).to include ::Regressor::Model::Expression.new(:is_expected, :to, :embed_many, :dummy_embeds).to_s }
+  it { expect(subject.embedded_relations).to include ::Regressor::Model::Expression.new(:is_expected, :to, :embed_one, :dummy_embed).to_s }
+
+  # === Regressor::Model::Mongoid::Relation::HasMany ===
+  it { expect(subject.has_many_relations).to include ::Regressor::Model::Expression.new(:is_expected, :to, :have_many, :dummy_options).to_s }
 end

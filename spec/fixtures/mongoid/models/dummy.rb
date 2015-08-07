@@ -18,4 +18,12 @@ class Dummy
   field :dummy_string, type: String
   field :dummy_symbol, type: Symbol
   field :dummy_time, type: Time
+
+  # === Relations ===
+  belongs_to :dummy_option
+  has_many :dummy_options
+
+  # === Embeds ===
+  embeds_many :dummy_embeds
+  embeds_one :dummy_embed
 end
