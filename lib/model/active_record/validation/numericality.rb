@@ -3,14 +3,15 @@ module Regressor
     module Validation
       module Numericality
         def numericality_validators
-          extract_validators(::ActiveModel::Validations::NumericalityValidator).inject([]) do |result, validator|
+          extract_validators(::ActiveModel::Validations::NumericalityValidator).flatten.map do |validator|
+            specs = []
             if validator.options.blank?
-              result += validator_without_options(validator)
+              specs.concat validator_without_options(validator)
             else
-              result += validator_with_options(validator)
+              specs.concat validator_with_options(validator)
             end
-            result
-          end.uniq.join("\n  ")
+            wrap_conditional_validations validator, specs.flatten.compact.uniq
+          end.join("\n  ")
         end
 
         private
