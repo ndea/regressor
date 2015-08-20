@@ -2,8 +2,7 @@ require 'faker'
 
 FactoryGirl.define do
 
-    factory :foo, class: Foo do
-        <%= @model.columns %>
+    factory :<%= @model.to_s.underscore.gsub('/', '_') %>, class: <%= @model %> do
     end
 
 end
