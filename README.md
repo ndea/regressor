@@ -7,6 +7,9 @@
 Regressor is a regression based testing tool.
 What is regression testing? [see here](http://en.wikipedia.org/wiki/Regression_testing).
 You can generate specs based on your ActiveRecord models.
+
+Made with ♥ at [TUTORize](http://tutorize.info)
+
 # Get Regressor
 ###### Directly from GitHub
 ```ruby
@@ -15,7 +18,7 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 or 
 ###### Rubygems
 ```ruby
-gem 'regressor', '~> 0.5.0'
+gem 'regressor', '~> 0.5.8'
 ```
 
 # Install
@@ -54,8 +57,12 @@ Then require the gem dependency 'shoulda-matchers' in your rails_helper (or spec
 ```ruby
 require 'shoulda/matchers'
 ```
+
+If you are using mongoid please add [mongoid-rspec](https://github.com/mongoid-rspec/mongoid-rspec).
+
 # Usage
 ###### Run the generator:
+##### ActiveRecord 
 ```ruby
 rails generate regressor:model # Create Regression specs for your models
 rails generate regressor:controller # Create Regression specs for your controllers
@@ -88,8 +95,13 @@ rails generate regressor:mongoid:model # Create regression specs for your mongoi
    - belongs_to
    - has_many
    - has_one
+   - embeds_one
+   - embeds_many
  - Database
    - Fields
+ - Document
+   - Includes
+   - Versioning
 
 ###### Controllers
  - Routing
@@ -111,5 +123,10 @@ rails generate regressor:mongoid:model # Create regression specs for your mongoi
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
+# Contribution topics wanted
 
-
+- Specs
+- Documentation
+- Bugfixes
+- Codestyle
+- Anything that improves this gem

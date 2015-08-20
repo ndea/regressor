@@ -9,6 +9,8 @@ require_relative 'active_record/database/column'
 require_relative 'active_record/database/index'
 require_relative 'active_record/nested/attribute'
 require_relative 'active_record/enum'
+require_relative 'active_record/validation'
+
 
 module Regressor
   module Model
@@ -17,6 +19,7 @@ module Regressor
       include Relation::BelongTo
       include Relation::HasOne
       include Relation::HasMany
+      include Validation
       include Validation::Presence
       include Validation::Length
       include Validation::Numericality

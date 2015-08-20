@@ -1,7 +1,7 @@
 require 'model/active_record_model'
 
 module Regressor
-  class ModelGenerator < Rails::Generators::Base
+  class ModelGenerator < ::Rails::Generators::Base
     source_root(File.expand_path(File.dirname(__FILE__)))
 
     def create_regression_files
@@ -36,8 +36,8 @@ module Regressor
     def save_generate(model)
       begin
         yield
-      rescue Exception => e
-        puts "Cannot create model regression for #{model}"
+      rescue => e
+        puts "Cannot create model regression for #{model}. Reason #{e.message}"
       end
     end
 

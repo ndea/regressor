@@ -3,10 +3,19 @@ module Regressor
     module Mongoid
       module Database
         module Field
+
+          def fields_as_string
+            fields.join("\n  ")
+          end
+
           def fields
             @model.fields.keys.map do |field|
-              "it { is_expected.to have_field(:#{field}).of_type(#{field_type(@model, field)}) }"
-            end.join("\n  ")
+              ::Regressor::Model::Expression.new(:is_expected,
+                                                 :to,
+                                                 :have_field,
+                                                 field,
+                                                 "of_type(#{field_type(@model, field)})").to_s
+            end
           end
 
           private

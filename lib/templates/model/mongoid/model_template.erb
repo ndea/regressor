@@ -1,12 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe <%= @model.model %>, regressor: true do
+  # === Document ===
+  <%= @model.timestamp_includes %>
+  <%= @model.version_include %>
 
   # === Relations ===
-  <%= @model.belongs_to_relations %>
-  <%= @model.has_one_relations %>
-  <%= @model.has_many_relations %>
+  <%= @model.belongs_to_relations_as_string %>
+  <%= @model.has_one_relations_as_string %>
+  <%= @model.has_many_relations_as_string %>
+  <%= @model.embedded_relations_as_string %>
 
   # === Database (Fields) ===
-  <%= @model.fields %>
+  <%= @model.fields_as_string %>
 end
