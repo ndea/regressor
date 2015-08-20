@@ -1,4 +1,9 @@
 require 'faker'
 
 FactoryGirl.define do
+
+    factory :foo, class: Foo do
+        <%= @model.columns %>
+    end
+
 end

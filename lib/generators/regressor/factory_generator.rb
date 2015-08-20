@@ -1,3 +1,5 @@
+require 'model/factory_model'
+
 module Regressor
   class FactoryGenerator < Rails::Generators::Base
     source_root(File.expand_path(File.dirname(__FILE__)))
@@ -12,6 +14,7 @@ module Regressor
     def generate_factories
       load_ar_models.each do |model|
         save_generate(model) do
+          @model = ::Regressor::Model::FactoryModel.new(model)
           create_file "#{Regressor.configuration.regression_factory_path}/#{model.underscore.singularize}_factory.rb",
                       ERB.new(File.new(File.expand_path('../../templates/factory/factory_template.erb', File.dirname(__FILE__))).read).result(binding)
         end
@@ -34,7 +37,7 @@ module Regressor
       begin
         yield
       rescue => e
-        puts "Cannot create model regression for #{model}. Reason #{e.message}"
+        puts "Cannot create factory for #{model}. Reason #{e.message}"
       end
     end
 
