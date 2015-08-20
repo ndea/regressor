@@ -1,0 +1,8 @@
+require 'faker'
+
+FactoryGirl.define do
+
+    factory :<%= @model.model.to_s.underscore.gsub('/', '_') %>, class: <%= @model.model %> do
+    end
+
+end
