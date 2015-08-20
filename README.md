@@ -18,7 +18,7 @@ gem 'regressor', git: 'https://github.com/ndea/regressor.git', branch: 'master'
 or 
 ###### Rubygems
 ```ruby
-gem 'regressor', '~> 0.5.8'
+gem 'regressor', '~> 0.6.0'
 ```
 
 # Install
@@ -72,7 +72,16 @@ rails generate regressor:controller # Create Regression specs for your controlle
 rails generate regressor:mongoid:model # Create regression specs for your mongoid models
 ```
 
+##### Factories
+You can even generate empty factories for your models simply by running
+```ruby
+rails generate regressor:factory # Create empty factories based on your models
+```
+
 ##### Supported Regressions
+##### Factories
+Empty factories can be created. 
+
 ##### Models
 
 ###### ActiveRecord
