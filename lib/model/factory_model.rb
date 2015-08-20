@@ -1,5 +1,3 @@
-require_relative 'factory/attributes'
-
 module Regressor
   module Model
     class FactoryModel
