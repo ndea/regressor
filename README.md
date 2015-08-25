@@ -8,7 +8,7 @@ Regressor is a regression based testing tool.
 What is regression testing? [see here](http://en.wikipedia.org/wiki/Regression_testing).
 You can generate specs based on your ActiveRecord models.
 
-Made with ♥ at [TUTORize](http://tutorize.info)
+Made with ♥ at [Qurasoft](http://qurasoft.de)
 
 # Get Regressor
 ###### Directly from GitHub
