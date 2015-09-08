@@ -62,20 +62,22 @@ If you are using mongoid please add [mongoid-rspec](https://github.com/mongoid-r
 
 # Usage
 ###### Run the generator:
+Be sure to run the generators in the `test` environment so that `development`-only gems are not being loaded, causing strange issues with controller filters and ActiveRecord callbacks.
+
 ##### ActiveRecord 
 ```ruby
-rails generate regressor:model # Create Regression specs for your models
-rails generate regressor:controller # Create Regression specs for your controllers
+RAILS_ENV=test rails generate regressor:model # Create Regression specs for your models
+RAILS_ENV=test rails generate regressor:controller # Create Regression specs for your controllers
 ```
 ##### Mongoid
 ```ruby
-rails generate regressor:mongoid:model # Create regression specs for your mongoid models
+RAILS_ENV=test rails generate regressor:mongoid:model # Create regression specs for your mongoid models
 ```
 
 ##### Factories
 You can even generate empty factories for your models simply by running
 ```ruby
-rails generate regressor:factory # Create empty factories based on your models
+RAILS_ENV=test rails generate regressor:factory # Create empty factories based on your models
 ```
 
 ##### Supported Regressions
