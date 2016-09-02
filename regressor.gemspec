@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'shoulda-matchers', '~> 2.7.0', '>= 2.7.0'
   s.add_dependency 'faker', '~> 1.3'
-  s.add_dependency 'rails', '~> 4.0'
+  s.add_dependency 'rails', '~> 4.0', '>= 5.0.0.1'
 
   s.add_development_dependency 'sqlite3', '~> 1.3.0', '>= 1.3.0'
   s.add_development_dependency 'generator_spec', '~> 0'
