@@ -3,7 +3,7 @@ module Regressor
     module Database
       module Index
         def indices
-          ::ActiveRecord::Base.connection.indexes(@model.tableize.gsub("/", "_")).map do |indexes|
+          ::ActiveRecord::Base.connection.indexes(@model.constantize.table_name).map do |indexes|
             "it { is_expected.to have_db_index #{indexes.columns} }"
           end.flatten.join("\n  ")
         end
