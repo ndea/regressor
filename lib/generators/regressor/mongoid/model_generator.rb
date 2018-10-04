@@ -5,6 +5,9 @@ module Regressor
     class ModelGenerator < Rails::Generators::Base
       source_root(File.expand_path(File.dirname(__FILE__)))
 
+      argument :models, type: :array, default: [], banner: "models"
+
+      desc 'Create regression specs for mongoid models.'
       def create_regression_files
         load_application
         generate_mongoid_specs
@@ -27,10 +30,14 @@ module Regressor
       end
 
       def load_mongoid_models
-        models = Object.constants.collect { |sym| Object.const_get(sym) }.
+        mongoid_models = Object.constants.collect { |sym| Object.const_get(sym) }.
             select { |constant| constant.class == Class && constant.include?(::Mongoid::Document) }
-        models << models.map(&:subclasses)
-        models.flatten.uniq.reject { |x| Regressor.configuration.excluded_models.include? x }
+        mongoid_models << mongoid_models.map(&:subclasses)
+        mongoid_models = mongoid_models.flatten.uniq
+        mongoid_models &= models.map(&:classify).map(&:constantize) if models.present?
+        mongoid_models.reject { |x| Regressor.configuration.excluded_models.include? x }
+      rescue
+        []
       end
 
       def save_generate(model)

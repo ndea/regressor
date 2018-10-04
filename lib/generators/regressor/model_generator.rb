@@ -4,6 +4,9 @@ module Regressor
   class ModelGenerator < ::Rails::Generators::Base
     source_root(File.expand_path(File.dirname(__FILE__)))
 
+    argument :models, type: :array, default: [], banner: "models"
+
+    desc 'Create regression specs for activerecord models.'
     def create_regression_files
       load_application
       generate_ar_specs
@@ -27,7 +30,9 @@ module Regressor
 
     def load_ar_models
       if defined?(::ActiveRecord::Base)
-        ActiveRecord::Base.descendants.map(&:name).reject { |x| Regressor.configuration.excluded_models.include? x }
+        ar_models = ActiveRecord::Base.descendants.map(&:name)
+        ar_models &= models.map(&:classify) if models.present?
+        ar_models.reject { |x| Regressor.configuration.excluded_models.include? x }
       else
         []
       end
