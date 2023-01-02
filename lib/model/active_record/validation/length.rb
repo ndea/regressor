@@ -16,8 +16,8 @@ module Regressor
         def generate_length_examples(validator, upper_bound, lower_bound)
           validator.attributes.map do |attribute|
             [
-                "it { is_expected.to allow_value(Faker::Lorem.characters(#{lower_bound})).for :#{attribute} }",
-                "it { is_expected.not_to allow_value(Faker::Lorem.characters(#{upper_bound})).for :#{attribute} }"
+                "it { is_expected.to allow_value(Faker::Lorem.characters(number: #{lower_bound})).for :#{attribute} }",
+                "it { is_expected.not_to allow_value(Faker::Lorem.characters(number: #{upper_bound})).for :#{attribute} }"
             ]
           end
         end
