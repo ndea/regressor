@@ -4,6 +4,7 @@ RSpec.describe <%= @model.model %>, regressor: true do
 
   # === Relations ===
   <%= @model.belong_to_relations %>
+  <%= @model.has_and_belongs_to_many_relations %>
   <%= @model.has_one_relations %>
   <%= @model.has_many_relations %>
 

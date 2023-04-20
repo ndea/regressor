@@ -1,5 +1,6 @@
 require_relative 'active_record/util'
 require_relative 'active_record/relation/belong_to'
+require_relative 'active_record/relation/has_and_belongs_to_many'
 require_relative 'active_record/relation/has_one'
 require_relative 'active_record/relation/has_many'
 require_relative 'active_record/validation/presence'
@@ -17,6 +18,7 @@ module Regressor
     class ActiveRecordModel
       # === Includes ===
       include Relation::BelongTo
+      include Relation::HasAndBelongsToMany
       include Relation::HasOne
       include Relation::HasMany
       include Validation
